@@ -6,8 +6,8 @@ Criar uma solução 100% online para o casamento civil utilizando blockchain.
 Victor Savoi Silvestrini Rodrigues - RM 81991\
 Pedro Henrique Rangel Francisco - RM 82165\
 Lucas Oliveira Sanches Leal - RM 82021\
-Pedro\
-Caio
+Caio Campos Aureliano- RM 83786\
+Pedro Cardo Vasconcellos - RM 82387
 
 ### Tecnologias utilizadas
 Frontend - Angular\
