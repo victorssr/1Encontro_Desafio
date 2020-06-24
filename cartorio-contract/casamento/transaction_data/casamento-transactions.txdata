@@ -1,0 +1,44 @@
+[
+    {
+        "transactionName": "casamentoExists",
+        "transactionLabel": "A test casamentoExists transaction",
+        "arguments": [
+            "001"
+        ],
+        "transientData": {}
+    },
+    {
+        "transactionName": "createCasamento",
+        "transactionLabel": "A test createCasamento transaction",
+        "arguments": [
+            "001",
+            "some value"
+        ],
+        "transientData": {}
+    },
+    {
+        "transactionName": "readCasamento",
+        "transactionLabel": "A test readCasamento transaction",
+        "arguments": [
+            "001"
+        ],
+        "transientData": {}
+    },
+    {
+        "transactionName": "updateCasamento",
+        "transactionLabel": "A test updateCasamento transaction",
+        "arguments": [
+            "001",
+            "some other value"
+        ],
+        "transientData": {}
+    },
+    {
+        "transactionName": "deleteCasamento",
+        "transactionLabel": "A test deleteCasamento transaction",
+        "arguments": [
+            "001"
+        ],
+        "transientData": {}
+    }
+]
