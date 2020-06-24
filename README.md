@@ -2,12 +2,12 @@
 Desafio:\
 Criar uma solução 100% online para o casamento civil utilizando blockchain.
 
-Integrantes do grupo:\
+# Integrantes do grupo:\
 Victor Savoi Silvestrini Rodrigues - RM 81991\
 Pedro Henrique Rangel Francisco - RM 82165\
-Lucas\
+Lucas Oliveira Sanches Leal - RM 82021\
 Pedro\
-Caio\
+Caio
 
 Tecnologias utilizadas:\
 Frontend - Angular\
