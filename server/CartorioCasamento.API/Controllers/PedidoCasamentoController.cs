@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using AutoMapper;
 using CartorioCasamento.API.ViewModels;
 using CartorioCasamento.Domain.Interfaces.Services;
@@ -12,16 +14,21 @@ namespace CartorioCasamento.API.Controllers
     public class PedidoCasamentoController : ControllerBase
     {
         private readonly IPedidoCasamentoService _pedidoCasamentoService;
+        private readonly IUsuarioService _usuarioService;
+        private readonly ICasamentoService _casamentoService;
         private readonly IMapper _mapper;
 
-        public PedidoCasamentoController(IPedidoCasamentoService pedidoCasamentoService, IMapper mapper)
+        public PedidoCasamentoController(IPedidoCasamentoService pedidoCasamentoService, IMapper mapper, IUsuarioService usuarioService,
+            ICasamentoService casamentoService)
         {
             _pedidoCasamentoService = pedidoCasamentoService;
             _mapper = mapper;
+            _usuarioService = usuarioService;
+            _casamentoService = casamentoService;
         }
 
         [HttpGet("{id:int}")]
-        public async Task<ActionResult<PedidoCasamentoViewModel>> Get(int id)
+        public async Task<ActionResult<PedidoCasamentoViewModel>> ObterPorId(int id)
         {
             var pedidoCasamentoViewModel = await _pedidoCasamentoService.GetById(id);
 
@@ -31,7 +38,7 @@ namespace CartorioCasamento.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post(PedidoCasamentoViewModel pedidoCasamentoViewModel)
+        public async Task<IActionResult> Criar(PedidoCasamentoViewModel pedidoCasamentoViewModel)
         {
             if (!ModelState.IsValid) return BadRequest(new { Success = false, Message = "Modelo inválido." });
 
@@ -41,7 +48,7 @@ namespace CartorioCasamento.API.Controllers
         }
 
         [HttpPut("{id:int}")]
-        public async Task<IActionResult> Put(int id, PedidoCasamentoViewModel pedidoCasamentoViewModel)
+        public async Task<IActionResult> Atualizar(int id, PedidoCasamentoViewModel pedidoCasamentoViewModel)
         {
             if (id != pedidoCasamentoViewModel.Id) return BadRequest(new { Success = false, Message = "Id informato está diferente do modelo enviado." });
 
@@ -51,7 +58,7 @@ namespace CartorioCasamento.API.Controllers
         }
 
         [HttpDelete("{id:int}")]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Excluir(int id)
         {
             var pedidoCasamentoViewModel = await _pedidoCasamentoService.GetById(id);
 
@@ -60,6 +67,42 @@ namespace CartorioCasamento.API.Controllers
             await _pedidoCasamentoService.Remove(id);
 
             return Ok();
+        }
+
+        [HttpGet("{id:int}")]
+        public async Task<ActionResult<List<PedidoCasamentoViewModel>>> BuscarPedidosPendentes(int idUsuario)
+        {
+            var usuario = await _usuarioService.GetById(idUsuario);
+
+            if (usuario == null) return NotFound();
+
+            var pedidosPendentes = _pedidoCasamentoService.BuscaPedidosPendentesUsuario(idUsuario);
+            return _mapper.Map<List<PedidoCasamentoViewModel>>(pedidosPendentes);
+        }
+
+        [HttpPost("{id:int}, {aceitarPedido:bool}")]
+        public async Task<IActionResult> ResponderPedidoCasamento(int id, bool aceitarPedido)
+        {
+            var pedidoCasamento = await _pedidoCasamentoService.GetById(id);
+            if (pedidoCasamento == null) return NotFound();
+
+            if (!aceitarPedido)
+            {
+                pedidoCasamento.DataPedidoNegado = DateTime.Now;
+                await _pedidoCasamentoService.Update(pedidoCasamento);
+                return NoContent();
+            }
+
+            pedidoCasamento.DataPedidoAceito = DateTime.Now;
+            await _pedidoCasamentoService.Update(pedidoCasamento);
+
+            var casamento = new Casamento
+            {
+                PedidoCasamentoId = id
+            };
+            await _casamentoService.Add(casamento);
+
+            return Ok(new { Success = true, IdCasamento = casamento.Id });
         }
 
     }

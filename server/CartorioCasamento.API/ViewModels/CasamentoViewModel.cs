@@ -15,23 +15,15 @@ namespace CartorioCasamento.API.ViewModels
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         public int PedidoCasamentoId { get; set; }
 
-        [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public int UsuarioPrimeiraTestemunhaId { get; set; }
-
-        [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public int UsuarioSegundaTestemunhaId { get; set; }
-
-        [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public DateTime DataEntrada { get; set; }
-
-        [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public decimal ValorCasamento { get; set; }
-
+        public int? UsuarioPrimeiraTestemunhaId { get; set; }
+        public int? UsuarioSegundaTestemunhaId { get; set; }
+        public DateTime? DataEntrada { get; set; }
+        public decimal? ValorCasamento { get; set; }
         public DateTime? DataAprovacaoEntrada { get; set; }
         public DateTime? DataCasamento { get; set; }
         public DateTime? DataRealizacaoCasamento { get; set; }
         public string LinkCerimoniaGravada { get; set; }
-        public string DataAprovacaoDiarioOficial { get; set; }
+        public DateTime? DataAprovacaoDiarioOficial { get; set; }
         public string ArquivoFoto { get; set; }
         public DateTime? DataDivorcio { get; set; }
 

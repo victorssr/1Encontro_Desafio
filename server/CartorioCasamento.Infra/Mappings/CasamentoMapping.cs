@@ -25,21 +25,17 @@ namespace CartorioCasamento.Infra.Mappings
                 .IsRequired();
 
             builder.Property(p => p.UsuarioPrimeiraTestemunhaId)
-                .HasColumnName("ID_USUARIO_PRIMEIRA_TESTEMUNHA")
-                .IsRequired();
+                .HasColumnName("ID_USUARIO_PRIMEIRA_TESTEMUNHA");
 
             builder.Property(p => p.UsuarioSegundaTestemunhaId)
-                .HasColumnName("ID_USUARIO_SEGUNDA_TESTEMUNHA")
-                .IsRequired();
+                .HasColumnName("ID_USUARIO_SEGUNDA_TESTEMUNHA");
 
             builder.Property(p => p.DataEntrada)
-                .HasColumnName("DAT_ENTRADA")
-                .IsRequired();
+                .HasColumnName("DAT_ENTRADA");
 
             builder.Property(p => p.ValorCasamento)
                 .HasColumnName("VLR_CASAMENTO")
-                .HasColumnType("DECIMAL(9, 2)")
-                .IsRequired();
+                .HasColumnType("DECIMAL(9, 2)");
 
             builder.Property(p => p.DataAprovacaoEntrada)
                 .HasColumnName("DAT_APROVACAO_ENTRADA");

@@ -10,15 +10,15 @@ namespace CartorioCasamento.Domain.Models
         }
         public Guid Referencia { get; set; }
         public int PedidoCasamentoId { get; set; }
-        public int UsuarioPrimeiraTestemunhaId { get; set; }
-        public int UsuarioSegundaTestemunhaId { get; set; }
-        public DateTime DataEntrada { get; set; }
-        public decimal ValorCasamento { get; set; }
+        public int? UsuarioPrimeiraTestemunhaId { get; set; }
+        public int? UsuarioSegundaTestemunhaId { get; set; }
+        public DateTime? DataEntrada { get; set; }
+        public decimal? ValorCasamento { get; set; }
         public DateTime? DataAprovacaoEntrada { get; set; }
         public DateTime? DataCasamento { get; set; }
         public DateTime? DataRealizacaoCasamento { get; set; }
         public string LinkCerimoniaGravada { get; set; }
-        public string DataAprovacaoDiarioOficial { get; set; }
+        public DateTime? DataAprovacaoDiarioOficial { get; set; }
         public string ArquivoFoto { get; set; }
         public DateTime? DataDivorcio { get; set; }
 

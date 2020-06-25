@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Security.Cryptography;
+using System.Threading.Tasks;
 using AutoMapper;
 using CartorioCasamento.API.ViewModels;
 using CartorioCasamento.Domain.Interfaces.Services;
@@ -21,7 +23,7 @@ namespace CartorioCasamento.API.Controllers
         }
 
         [HttpGet("{id:int}")]
-        public async Task<ActionResult<UsuarioViewModel>> Get(int id)
+        public async Task<ActionResult<UsuarioViewModel>> ObterPorId(int id)
         {
             var usuarioViewModel = await _usuarioService.GetById(id);
 
@@ -31,7 +33,7 @@ namespace CartorioCasamento.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post(UsuarioViewModel usuarioViewModel)
+        public async Task<IActionResult> Criar(UsuarioViewModel usuarioViewModel)
         {
             if (!ModelState.IsValid) return BadRequest(new { Success = false, Message = "Modelo inválido." });
 
@@ -41,7 +43,7 @@ namespace CartorioCasamento.API.Controllers
         }
 
         [HttpPut("{id:int}")]
-        public async Task<IActionResult> Put(int id, UsuarioViewModel usuarioViewModel)
+        public async Task<IActionResult> Atualizar(int id, UsuarioViewModel usuarioViewModel)
         {
             if (id != usuarioViewModel.Id) return BadRequest(new { Success = false, Message = "Id informato está diferente do modelo enviado." });
 
@@ -51,7 +53,7 @@ namespace CartorioCasamento.API.Controllers
         }
 
         [HttpDelete("{id:int}")]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Excluir(int id)
         {
             var usuarioViewModel = await _usuarioService.GetById(id);
 
@@ -62,5 +64,25 @@ namespace CartorioCasamento.API.Controllers
             return Ok();
         }
 
+        [HttpPost]
+        public async Task<IActionResult> DefineImpedimento(int id, bool desimpedido)
+        {
+            var usuario = await _usuarioService.GetById(id);
+
+            if (usuario == null) return NotFound();
+
+            usuario.Desimpedido = desimpedido;
+            await _usuarioService.Update(usuario);
+
+            return Ok(new { Success = true, Message = "Situação do usuário alterado com sucesso!" });
+        }
+
+        [HttpGet("{id:int}")]
+        public async Task<ActionResult<List<UsuarioViewModel>>> BuscaUsuariosDisponiveis()
+        {
+            var usuarios = await _usuarioService.GetAll();
+
+            return _mapper.Map<List<UsuarioViewModel>>(usuarios);
+        }
     }
 }

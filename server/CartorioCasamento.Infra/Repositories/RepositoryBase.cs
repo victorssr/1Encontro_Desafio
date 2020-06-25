@@ -12,7 +12,7 @@ namespace CartorioCasamento.Infra.Repositories
 {
     public class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : EntityBase, new()
     {
-        private readonly ContextBase _contextBase;
+        protected readonly ContextBase _contextBase;
         private readonly DbSet<TEntity> _dbSet;
 
         public RepositoryBase(ContextBase contextBase)
