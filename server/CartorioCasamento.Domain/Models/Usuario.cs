@@ -31,7 +31,9 @@ namespace CartorioCasamento.Domain.Models
 
         // RELACIONAMENTOS
         public Estado Estado { get; set; }
-        public List<Casamento> CasamentosTestemunhas { get; set; }
-        public List<PedidoCasamento> PedidosCasamentos { get; set; }
+        public List<Casamento> CasamentosPrimeirasTestemunhas { get; set; }
+        public List<Casamento> CasamentosSegundasTestemunhas { get; set; }
+        public List<PedidoCasamento> PedidosCasamentosSolicitante { get; set; }
+        public List<PedidoCasamento> PedidosCasamentosSolicitado { get; set; }
     }
 }

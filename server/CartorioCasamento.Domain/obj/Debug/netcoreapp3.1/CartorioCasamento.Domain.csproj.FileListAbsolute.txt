@@ -1,6 +1,7 @@
 D:\FIAP\1ª Encontro Presencial - 2020\Desafio\server\CartorioCasamento.Domain\bin\Debug\netcoreapp3.1\CartorioCasamento.Domain.deps.json
 D:\FIAP\1ª Encontro Presencial - 2020\Desafio\server\CartorioCasamento.Domain\bin\Debug\netcoreapp3.1\CartorioCasamento.Domain.dll
 D:\FIAP\1ª Encontro Presencial - 2020\Desafio\server\CartorioCasamento.Domain\bin\Debug\netcoreapp3.1\CartorioCasamento.Domain.pdb
+D:\FIAP\1ª Encontro Presencial - 2020\Desafio\server\CartorioCasamento.Domain\obj\Debug\netcoreapp3.1\CartorioCasamento.Domain.csprojAssemblyReference.cache
 D:\FIAP\1ª Encontro Presencial - 2020\Desafio\server\CartorioCasamento.Domain\obj\Debug\netcoreapp3.1\CartorioCasamento.Domain.AssemblyInfoInputs.cache
 D:\FIAP\1ª Encontro Presencial - 2020\Desafio\server\CartorioCasamento.Domain\obj\Debug\netcoreapp3.1\CartorioCasamento.Domain.AssemblyInfo.cs
 D:\FIAP\1ª Encontro Presencial - 2020\Desafio\server\CartorioCasamento.Domain\obj\Debug\netcoreapp3.1\CartorioCasamento.Domain.csproj.CoreCompileInputs.cache

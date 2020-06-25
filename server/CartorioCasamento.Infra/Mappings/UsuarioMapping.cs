@@ -63,7 +63,8 @@ namespace CartorioCasamento.Infra.Mappings
                 .IsRequired();
 
             builder.Property(p => p.Complemento)
-                .HasColumnName("DSC_COMPLEMENTO");
+                .HasColumnName("DSC_COMPLEMENTO")
+                .HasMaxLength(10);
 
             builder.Property(p => p.Bairro)
                 .HasColumnName("NOM_BAIRRO")
@@ -79,7 +80,7 @@ namespace CartorioCasamento.Infra.Mappings
                 .HasColumnName("ID_ESTADO")
                 .IsRequired();
 
-            builder.Property(p => p.Cidade)
+            builder.Property(p => p.Cep)
                 .HasColumnName("COD_CEP")
                 .HasMaxLength(10)
                 .IsRequired();

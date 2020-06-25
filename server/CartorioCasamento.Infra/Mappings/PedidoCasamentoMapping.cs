@@ -11,8 +11,8 @@ namespace CartorioCasamento.Infra.Mappings
         {
             // TABELA
             builder.SetEntityBaseConfiguration("PEDIDO_CASAMENTO");
-            builder.HasOne(p => p.UsuarioSolicitante).WithMany(p => p.PedidosCasamentos).HasForeignKey(p => p.UsuarioSolicitanteId);
-            builder.HasOne(p => p.UsuarioSolicitado).WithMany(p => p.PedidosCasamentos).HasForeignKey(p => p.UsuarioSolicitadoId);
+            builder.HasOne(p => p.UsuarioSolicitante).WithMany(p => p.PedidosCasamentosSolicitante).HasForeignKey(p => p.UsuarioSolicitanteId);
+            builder.HasOne(p => p.UsuarioSolicitado).WithMany(p => p.PedidosCasamentosSolicitado).HasForeignKey(p => p.UsuarioSolicitadoId);
             builder.HasOne(p => p.RegimeBens).WithMany(p => p.PedidosCasamentos).HasForeignKey(p => p.RegimeBensId);
 
             // CAMPOS
@@ -32,7 +32,7 @@ namespace CartorioCasamento.Infra.Mappings
                     .HasColumnName("DAT_PEDIDO_NEGADO");
 
             builder.Property(p => p.DataPedidoAceito)
-                    .HasColumnName("DAT_PEDIDO_NEGADO");
+                    .HasColumnName("DAT_PEDIDO_ACEITO");
         }
     }
 }

@@ -20,7 +20,7 @@ namespace CartorioCasamento.Infra.Mappings
 
             builder.Property(p => p.Sigla)
                 .HasColumnName("SGL_ESTADO")
-                .HasMaxLength(100)
+                .HasMaxLength(2)
                 .IsRequired();
 
             builder.Property(p => p.ValorCasamento)

@@ -12,8 +12,8 @@ namespace CartorioCasamento.Infra.Mappings
             // TABELA
             builder.SetEntityBaseConfiguration("CASAMENTO");
             builder.HasOne(p => p.PedidoCasamento).WithOne(p => p.Casamento);
-            builder.HasOne(p => p.UsuarioPrimeiraTestemunha).WithMany(p => p.CasamentosTestemunhas).HasForeignKey(p => p.UsuarioPrimeiraTestemunhaId);
-            builder.HasOne(p => p.UsuarioSegundaTestemunha).WithMany(p => p.CasamentosTestemunhas).HasForeignKey(p => p.UsuarioSegundaTestemunhaId);
+            builder.HasOne(p => p.UsuarioPrimeiraTestemunha).WithMany(p => p.CasamentosPrimeirasTestemunhas).HasForeignKey(p => p.UsuarioPrimeiraTestemunhaId);
+            builder.HasOne(p => p.UsuarioSegundaTestemunha).WithMany(p => p.CasamentosSegundasTestemunhas).HasForeignKey(p => p.UsuarioSegundaTestemunhaId);
 
             // CAMPOS
             builder.Property(p => p.Referencia)
@@ -21,10 +21,14 @@ namespace CartorioCasamento.Infra.Mappings
                 .IsRequired();
 
             builder.Property(p => p.PedidoCasamentoId)
+                .HasColumnName("ID_PEDIDO_CASAMENTO")
+                .IsRequired();
+
+            builder.Property(p => p.UsuarioPrimeiraTestemunhaId)
                 .HasColumnName("ID_USUARIO_PRIMEIRA_TESTEMUNHA")
                 .IsRequired();
 
-            builder.Property(p => p.PedidoCasamentoId)
+            builder.Property(p => p.UsuarioSegundaTestemunhaId)
                 .HasColumnName("ID_USUARIO_SEGUNDA_TESTEMUNHA")
                 .IsRequired();
 
