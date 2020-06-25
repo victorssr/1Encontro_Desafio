@@ -12,10 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using Swashbuckle.Swagger;
-using System;
-using System.IO;
-using System.Reflection;
+using System.Collections.Generic;
 
 namespace CartorioCasamento.API
 {

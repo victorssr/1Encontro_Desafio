@@ -89,10 +89,5 @@ namespace CartorioCasamento.API.ViewModels
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         [MaxLength(100, ErrorMessage = "O campo {0} precisa ter até {1} caracteres")]
         public string ArquivoSentencaDivorcio { get; set; }
-
-        // RELACIONAMENTOS
-        public EstadoViewModel Estado { get; set; }
-        public List<CasamentoViewModel> CasamentosTestemunhas { get; set; }
-        public List<PedidoCasamentoViewModel> PedidosCasamentos { get; set; }
     }
 }

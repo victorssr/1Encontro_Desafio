@@ -28,9 +28,9 @@ namespace CartorioCasamento.API.ViewModels
         public DateTime? DataDivorcio { get; set; }
 
         // RELACIONAMENTOS
-        public PedidoCasamentoViewModel PedidoCasamento { get; set; }
-        public UsuarioViewModel UsuarioPrimeiraTestemunha { get; set; }
-        public UsuarioViewModel UsuarioSegundaTestemunha { get; set; }
+        //public PedidoCasamentoViewModel PedidoCasamento { get; set; }
+        //public UsuarioViewModel UsuarioPrimeiraTestemunha { get; set; }
+        //public UsuarioViewModel UsuarioSegundaTestemunha { get; set; }
 
         // AUXILIAR
         public string Status

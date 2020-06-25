@@ -20,6 +20,6 @@ namespace CartorioCasamento.API.ViewModels
         public decimal ValorCasamento { get; set; }
 
         // RELACIONAMENTO
-        public List<UsuarioViewModel> Usuarios { get; set; }
+        //public List<UsuarioViewModel> Usuarios { get; set; }
     }
 }

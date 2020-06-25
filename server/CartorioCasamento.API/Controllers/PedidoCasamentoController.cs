@@ -42,6 +42,14 @@ namespace CartorioCasamento.API.Controllers
         {
             if (!ModelState.IsValid) return BadRequest(new { Success = false, Message = "Modelo inválido." });
 
+            var usuarioSolicitante = await _usuarioService.FindAsNoTracking(pedidoCasamentoViewModel.UsuarioSolicitanteId);
+            if (usuarioSolicitante == null) return BadRequest(new { Success = false, Message = "Usuário solicitante não encontrado." });
+            //if (!usuarioSolicitante.Desimpedido) return BadRequest(new { Success = false, Message = "Usuário solicitante está impedido." });
+
+            var usuarioSolicitado = await _usuarioService.FindAsNoTracking(pedidoCasamentoViewModel.UsuarioSolicitadoId);
+            if (usuarioSolicitado == null) return BadRequest(new { Success = false, Message = "Usuário solicitado não encontrado." });
+            //if (!usuarioSolicitado.Desimpedido) return BadRequest(new { Success = false, Message = "Usuário solicitado está impedido." });
+
             await _pedidoCasamentoService.Add(_mapper.Map<PedidoCasamento>(pedidoCasamentoViewModel));
 
             return Ok();
@@ -60,7 +68,7 @@ namespace CartorioCasamento.API.Controllers
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> Excluir(int id)
         {
-            var pedidoCasamentoViewModel = await _pedidoCasamentoService.GetById(id);
+            var pedidoCasamentoViewModel = await _pedidoCasamentoService.FindAsNoTracking(id);
 
             if (pedidoCasamentoViewModel == null) return NotFound();
 
@@ -69,14 +77,14 @@ namespace CartorioCasamento.API.Controllers
             return Ok();
         }
 
-        [HttpGet("/[action]/{id:int}")]
+        [HttpGet("/[action]/{idUsuario:int}")]
         public async Task<ActionResult<List<PedidoCasamentoViewModel>>> BuscarPedidosPendentes(int idUsuario)
         {
-            var usuario = await _usuarioService.GetById(idUsuario);
+            var usuario = await _usuarioService.FindAsNoTracking(idUsuario);
 
             if (usuario == null) return NotFound();
 
-            var pedidosPendentes = _pedidoCasamentoService.BuscaPedidosPendentesUsuario(idUsuario);
+            var pedidosPendentes = await _pedidoCasamentoService.BuscaPedidosPendentesUsuario(idUsuario);
             return _mapper.Map<List<PedidoCasamentoViewModel>>(pedidosPendentes);
         }
 
@@ -85,6 +93,9 @@ namespace CartorioCasamento.API.Controllers
         {
             var pedidoCasamento = await _pedidoCasamentoService.GetById(id);
             if (pedidoCasamento == null) return NotFound();
+
+            if (pedidoCasamento.DataPedidoAceito.HasValue || pedidoCasamento.DataPedidoNegado.HasValue)
+                return BadRequest(new { Success = false, Message = "Este pedido de casamento já foi respondido." });
 
             if (!aceitarPedido)
             {

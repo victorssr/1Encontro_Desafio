@@ -32,7 +32,7 @@ namespace CartorioCasamento.Infra.Repositories
         {
             var entity = await _dbSet.FindAsync(id);
 
-            _contextBase.Entry(entity).State = EntityState.Detached;
+            if(entity != null) _contextBase.Entry(entity).State = EntityState.Detached;
 
             return entity;
         }

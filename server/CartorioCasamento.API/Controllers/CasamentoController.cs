@@ -23,21 +23,8 @@ namespace CartorioCasamento.API.Controllers
             _estadoService = estadoService;
         }
 
-        /// <summary>
-        /// Lista todos os desafios registrados
-        /// </summary>
-        /// <returns>Lista dos desafios registrados</returns>
-        /// <response code="200">Retorna os desafios registrados</response>
-        /// <response code="400">Erro ao buscar os desafios</response>
-        /// <remarks>
-        /// Orientações de testes:
-        /// 
-        ///     Clique no botão "Try it out" abaixo e depois no botão "Execute" que será exibido para testar o serviço.
-        ///     
-        ///     Dica: Utilize este serviço para ver os Id's disponíveis para os próximos testes. Caso não encontre nenhum registro na lista, utilize o serviço de cadastro para registrar um novo desafio.
-        /// </remarks>
         [HttpGet("{id:int}")]
-        public async Task<ActionResult<CasamentoViewModel>> Get(int id)
+        public async Task<ActionResult<CasamentoViewModel>> ObterPorId(int id)
         {
             var casamentoViewModel = await _casamentoService.GetById(id);
 
@@ -46,30 +33,30 @@ namespace CartorioCasamento.API.Controllers
             return _mapper.Map<CasamentoViewModel>(casamentoViewModel);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Post(CasamentoViewModel casamentoViewModel)
-        {
-            if (!ModelState.IsValid) return BadRequest(new { Success = false, Message = "Modelo inválido." });
+        //[HttpPost]
+        //public async Task<IActionResult> Criar(CasamentoViewModel casamentoViewModel)
+        //{
+        //    if (!ModelState.IsValid) return BadRequest(new { Success = false, Message = "Modelo inválido." });
 
-            await _casamentoService.Add(_mapper.Map<Casamento>(casamentoViewModel));
+        //    await _casamentoService.Add(_mapper.Map<Casamento>(casamentoViewModel));
 
-            return Ok();
-        }
+        //    return Ok();
+        //}
 
-        [HttpPut("{id:int}")]
-        public async Task<IActionResult> Put(int id, CasamentoViewModel casamentoViewModel)
-        {
-            if (id != casamentoViewModel.Id) return BadRequest(new { Success = false, Message = "Id informato está diferente do modelo enviado." });
+        //[HttpPut("{id:int}")]
+        //public async Task<IActionResult> Atualizar(int id, CasamentoViewModel casamentoViewModel)
+        //{
+        //    if (id != casamentoViewModel.Id) return BadRequest(new { Success = false, Message = "Id informato está diferente do modelo enviado." });
 
-            await _casamentoService.Update(_mapper.Map<Casamento>(casamentoViewModel));
+        //    await _casamentoService.Update(_mapper.Map<Casamento>(casamentoViewModel));
 
-            return Ok();
-        }
+        //    return Ok();
+        //}
 
         [HttpDelete("{id:int}")]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Excluir(int id)
         {
-            var casamentoViewModel = await _casamentoService.GetById(id);
+            var casamentoViewModel = await _casamentoService.FindAsNoTracking(id);
 
             if (casamentoViewModel == null) return NotFound();
 
@@ -79,12 +66,12 @@ namespace CartorioCasamento.API.Controllers
         }
 
         [HttpPost("/[action]/{id:int}, {idUsuarioTestemunha:int}")]
-        public async Task<IActionResult> InserirPrimeiraTestemunhaCasamento(int id, int idUsuarioTestemunha)
+        public async Task<IActionResult> InserirTestemunhaCasamento(int id, int idUsuarioTestemunha)
         {
             var casamento = await _casamentoService.GetById(id);
             if (casamento == null) return NotFound();
 
-            if (casamento.UsuarioPrimeiraTestemunhaId.HasValue && casamento.UsuarioPrimeiraTestemunhaId.HasValue)
+            if (casamento.UsuarioPrimeiraTestemunhaId.HasValue && casamento.UsuarioSegundaTestemunhaId.HasValue)
                 return BadRequest(new { Success = false, Message = "Este casamento já possui as duas testemunhas necessárias." });
 
             if (!casamento.UsuarioPrimeiraTestemunhaId.HasValue)
@@ -93,6 +80,9 @@ namespace CartorioCasamento.API.Controllers
             }
             else
             {
+                if (casamento.UsuarioPrimeiraTestemunhaId == idUsuarioTestemunha)
+                    return BadRequest(new { Success = false, Message = "Esta testemunha já está cadastrada para este casamento." });
+
                 casamento.UsuarioSegundaTestemunhaId = idUsuarioTestemunha;
             }
 
@@ -105,8 +95,10 @@ namespace CartorioCasamento.API.Controllers
         public async Task<IActionResult> AlterarPrimeiraTestemunhaCasamento(int id, int idUsuarioTestemunha)
         {
             var casamento = await _casamentoService.GetById(id);
-
             if (casamento == null) return NotFound();
+
+            if(!VerificaTestemunhaCasamento(casamento, idUsuarioTestemunha))
+                return BadRequest(new { Success = false, Message = "Esta testemunha já está cadastrada para este casamento." });
 
             casamento.UsuarioPrimeiraTestemunhaId = idUsuarioTestemunha;
             await _casamentoService.Update(casamento);
@@ -118,8 +110,10 @@ namespace CartorioCasamento.API.Controllers
         public async Task<IActionResult> AlterarSegundaTestemunhaCasamento(int id, int idUsuarioTestemunha)
         {
             var casamento = await _casamentoService.GetById(id);
-
             if (casamento == null) return NotFound();
+
+            if (!VerificaTestemunhaCasamento(casamento, idUsuarioTestemunha))
+                return BadRequest(new { Success = false, Message = "Esta testemunha já está cadastrada para este casamento." });
 
             casamento.UsuarioSegundaTestemunhaId = idUsuarioTestemunha;
             await _casamentoService.Update(casamento);
@@ -144,7 +138,7 @@ namespace CartorioCasamento.API.Controllers
             return Ok();
         }
 
-        [HttpPost("/[action]/{id:int}")]
+        [HttpPost("/[action]/{id:int},{dataAprovacao:DateTime}")]
         public async Task<IActionResult> AprovarEntradaCasamento(int id, DateTime dataAprovacao)
         {
             var casamento = await _casamentoService.GetById(id);
@@ -157,7 +151,7 @@ namespace CartorioCasamento.API.Controllers
             return Ok();
         }
 
-        [HttpPost("/[action]/{id:int}")]
+        [HttpPost("/[action]/{id:int},{dataCasamento:DateTime}")]
         public async Task<IActionResult> DefinirDataCasamento(int id, DateTime dataCasamento)
         {
             var casamento = await _casamentoService.GetById(id);
@@ -198,7 +192,7 @@ namespace CartorioCasamento.API.Controllers
             return Ok();
         }
 
-        [HttpPost("/[action]/{id:int}")]
+        [HttpPost("/[action]/{id:int},{dataAprovacaoDiarioOficial:DateTime}")]
         public async Task<IActionResult> DefinirAprovacaoDiarioOficial(int id, DateTime dataAprovacaoDiarioOficial)
         {
             var casamento = await _casamentoService.GetById(id);
@@ -212,5 +206,32 @@ namespace CartorioCasamento.API.Controllers
             return Ok();
         }
 
+        [HttpPost("/[action]/{id:int},{dataDivorcio:DateTime}")]
+        public async Task<IActionResult> DefinirDivorcio(int id, DateTime dataDivorcio)
+        {
+            var casamento = await _casamentoService.GetById(id);
+            if (casamento == null) return NotFound();
+
+            casamento.DataDivorcio = dataDivorcio;
+
+            await _casamentoService.Update(casamento);
+
+            return Ok();
+        }
+
+        private bool VerificaTestemunhaCasamento(Casamento casamento, int idUsuarioTestemunha)
+        {
+            if (casamento.UsuarioPrimeiraTestemunhaId.HasValue)
+            {
+                if (casamento.UsuarioPrimeiraTestemunhaId.Value == idUsuarioTestemunha) return false;
+            }
+
+            if (casamento.UsuarioSegundaTestemunhaId.HasValue)
+            {
+                if (casamento.UsuarioSegundaTestemunhaId.Value == idUsuarioTestemunha) return false;
+            }
+
+            return true;
+        }
     }
 }

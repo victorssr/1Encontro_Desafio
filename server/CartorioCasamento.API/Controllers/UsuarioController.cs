@@ -55,7 +55,7 @@ namespace CartorioCasamento.API.Controllers
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> Excluir(int id)
         {
-            var usuarioViewModel = await _usuarioService.GetById(id);
+            var usuarioViewModel = await _usuarioService.FindAsNoTracking(id);
 
             if (usuarioViewModel == null) return NotFound();
 

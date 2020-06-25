@@ -13,6 +13,6 @@ namespace CartorioCasamento.API.ViewModels
         public string Descricao { get; set; }
 
         // RELACIONAMENTO
-        public List<PedidoCasamentoViewModel> PedidosCasamentos { get; set; }
+        //public List<PedidoCasamentoViewModel> PedidosCasamentos { get; set; }
     }
 }

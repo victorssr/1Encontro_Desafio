@@ -1,6 +1,7 @@
 ﻿using CartorioCasamento.Domain.Interfaces.Repositories;
 using CartorioCasamento.Domain.Interfaces.Services;
 using CartorioCasamento.Domain.Models;
+using System.Threading.Tasks;
 
 namespace CartorioCasamento.Domain.Services
 {
@@ -12,6 +13,11 @@ namespace CartorioCasamento.Domain.Services
             : base(usuarioRepository)
         {
             _usuarioRepository = usuarioRepository;
+        }
+
+        public async Task<bool> BuscaDesimpedimento(int id)
+        {
+            return await _usuarioRepository.BuscaDesimpedimento(id);
         }
     }
 }

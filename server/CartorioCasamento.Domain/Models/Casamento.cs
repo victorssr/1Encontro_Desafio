@@ -6,7 +6,7 @@ namespace CartorioCasamento.Domain.Models
     {
         public Casamento()
         {
-            Referencia = new Guid();
+            Referencia = Guid.NewGuid();
         }
         public Guid Referencia { get; set; }
         public int PedidoCasamentoId { get; set; }
