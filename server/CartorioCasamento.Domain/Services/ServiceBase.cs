@@ -20,12 +20,12 @@ namespace CartorioCasamento.Domain.Services
 
         #region Consults
 
-        public virtual async Task<TEntity> GetById(Guid id)
+        public virtual async Task<TEntity> GetById(int id)
         {
             return await _repositoryBase.GetById(id);
         }
 
-        public virtual async Task<TEntity> FindAsNoTracking(Guid id)
+        public virtual async Task<TEntity> FindAsNoTracking(int id)
         {
             return await _repositoryBase.FindAsNoTracking(id);
         }
@@ -54,7 +54,7 @@ namespace CartorioCasamento.Domain.Services
             await _repositoryBase.Update(entity);
         }
 
-        public virtual async Task Remove(Guid id)
+        public virtual async Task Remove(int id)
         {
             await _repositoryBase.Remove(id);
         }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace CartorioCasamento.Domain.Models
 {
@@ -8,8 +9,7 @@ namespace CartorioCasamento.Domain.Models
         public string Celular { get; set; }
         public string Senha { get; set; }
 
-        public string Nome { get; set; }
-        public string Sobrenome { get; set; }
+        public string NomeCompleto { get; set; }
         public DateTime DataNascimento { get; set; }
         public string Cpf { get; set; }
         public string Rg { get; set; }
@@ -31,5 +31,7 @@ namespace CartorioCasamento.Domain.Models
 
         // RELACIONAMENTOS
         public Estado Estado { get; set; }
+        public List<Casamento> CasamentosTestemunhas { get; set; }
+        public List<PedidoCasamento> PedidosCasamentos { get; set; }
     }
 }

@@ -11,8 +11,8 @@ namespace CartorioCasamento.Domain.Interfaces.Services
         #region Consults
 
         Task<List<TEntity>> GetAll();
-        Task<TEntity> GetById(Guid id);
-        Task<TEntity> FindAsNoTracking(Guid id);
+        Task<TEntity> GetById(int id);
+        Task<TEntity> FindAsNoTracking(int id);
         Task<IEnumerable<TEntity>> Find(Expression<Func<TEntity, bool>> predicate);
 
         #endregion
@@ -21,7 +21,7 @@ namespace CartorioCasamento.Domain.Interfaces.Services
 
         Task Add(TEntity entity);
         Task Update(TEntity entity);
-        Task Remove(Guid id);
+        Task Remove(int id);
         Task RemoveInScale(List<TEntity> entities);
         Task<int> SaveChanges();
 

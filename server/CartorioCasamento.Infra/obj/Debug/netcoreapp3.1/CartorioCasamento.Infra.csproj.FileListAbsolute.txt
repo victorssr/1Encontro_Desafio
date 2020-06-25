@@ -1,0 +1,12 @@
+D:\FIAP\1ª Encontro Presencial - 2020\Desafio\server\CartorioCasamento.Infra\bin\Debug\netcoreapp3.1\CartorioCasamento.Infra.deps.json
+D:\FIAP\1ª Encontro Presencial - 2020\Desafio\server\CartorioCasamento.Infra\bin\Debug\netcoreapp3.1\CartorioCasamento.Infra.dll
+D:\FIAP\1ª Encontro Presencial - 2020\Desafio\server\CartorioCasamento.Infra\bin\Debug\netcoreapp3.1\CartorioCasamento.Domain.dll
+D:\FIAP\1ª Encontro Presencial - 2020\Desafio\server\CartorioCasamento.Infra\bin\Debug\netcoreapp3.1\CartorioCasamento.Domain.pdb
+D:\FIAP\1ª Encontro Presencial - 2020\Desafio\server\CartorioCasamento.Infra\obj\Debug\netcoreapp3.1\CartorioCasamento.Infra.csprojAssemblyReference.cache
+D:\FIAP\1ª Encontro Presencial - 2020\Desafio\server\CartorioCasamento.Infra\obj\Debug\netcoreapp3.1\CartorioCasamento.Infra.AssemblyInfoInputs.cache
+D:\FIAP\1ª Encontro Presencial - 2020\Desafio\server\CartorioCasamento.Infra\obj\Debug\netcoreapp3.1\CartorioCasamento.Infra.AssemblyInfo.cs
+D:\FIAP\1ª Encontro Presencial - 2020\Desafio\server\CartorioCasamento.Infra\obj\Debug\netcoreapp3.1\CartorioCasamento.Infra.csproj.CopyComplete
+D:\FIAP\1ª Encontro Presencial - 2020\Desafio\server\CartorioCasamento.Infra\obj\Debug\netcoreapp3.1\CartorioCasamento.Infra.csproj.CoreCompileInputs.cache
+D:\FIAP\1ª Encontro Presencial - 2020\Desafio\server\CartorioCasamento.Infra\bin\Debug\netcoreapp3.1\CartorioCasamento.Infra.pdb
+D:\FIAP\1ª Encontro Presencial - 2020\Desafio\server\CartorioCasamento.Infra\obj\Debug\netcoreapp3.1\CartorioCasamento.Infra.dll
+D:\FIAP\1ª Encontro Presencial - 2020\Desafio\server\CartorioCasamento.Infra\obj\Debug\netcoreapp3.1\CartorioCasamento.Infra.pdb

@@ -14,5 +14,6 @@ namespace CartorioCasamento.Domain.Models
         public Usuario UsuarioSolicitante { get; set; }
         public Usuario UsuarioSolicitado { get; set; }
         public RegimeBens RegimeBens { get; set; }
+        public Casamento Casamento { get; set; }
     }
 }
