@@ -1,3 +1,5 @@
+using AutoMapper;
+using CartorioCasamento.API.AutoMapper;
 using CartorioCasamento.Domain.Interfaces.Repositories;
 using CartorioCasamento.Domain.Interfaces.Services;
 using CartorioCasamento.Domain.Services;
@@ -27,6 +29,8 @@ namespace CartorioCasamento.API
             {
                 options.UseSqlServer(Configuration.GetConnectionString("Conexao"));
             });
+
+            services.AddAutoMapper(typeof(MappingProfile));
 
             services.AddControllers();
 

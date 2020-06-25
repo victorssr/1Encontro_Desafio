@@ -47,8 +47,6 @@ D:\FIAP\1ª Encontro Presencial - 2020\Desafio\server\CartorioCasamento.API\bin\
 D:\FIAP\1ª Encontro Presencial - 2020\Desafio\server\CartorioCasamento.API\obj\Debug\netcoreapp3.1\CartorioCasamento.API.csprojAssemblyReference.cache
 D:\FIAP\1ª Encontro Presencial - 2020\Desafio\server\CartorioCasamento.API\obj\Debug\netcoreapp3.1\CartorioCasamento.API.AssemblyInfoInputs.cache
 D:\FIAP\1ª Encontro Presencial - 2020\Desafio\server\CartorioCasamento.API\obj\Debug\netcoreapp3.1\CartorioCasamento.API.AssemblyInfo.cs
-D:\FIAP\1ª Encontro Presencial - 2020\Desafio\server\CartorioCasamento.API\obj\Debug\netcoreapp3.1\CartorioCasamento.API.csproj.CoreCompileInputs.cache
-D:\FIAP\1ª Encontro Presencial - 2020\Desafio\server\CartorioCasamento.API\obj\Debug\netcoreapp3.1\CartorioCasamento.API.MvcApplicationPartsAssemblyInfo.cache
 D:\FIAP\1ª Encontro Presencial - 2020\Desafio\server\CartorioCasamento.API\obj\Debug\netcoreapp3.1\CartorioCasamento.API.RazorTargetAssemblyInfo.cache
 D:\FIAP\1ª Encontro Presencial - 2020\Desafio\server\CartorioCasamento.API\obj\Debug\netcoreapp3.1\CartorioCasamento.API.csproj.CopyComplete
 D:\FIAP\1ª Encontro Presencial - 2020\Desafio\server\CartorioCasamento.API\obj\Debug\netcoreapp3.1\staticwebassets\CartorioCasamento.API.StaticWebAssets.Manifest.cache
@@ -56,3 +54,7 @@ D:\FIAP\1ª Encontro Presencial - 2020\Desafio\server\CartorioCasamento.API\obj\
 D:\FIAP\1ª Encontro Presencial - 2020\Desafio\server\CartorioCasamento.API\obj\Debug\netcoreapp3.1\CartorioCasamento.API.dll
 D:\FIAP\1ª Encontro Presencial - 2020\Desafio\server\CartorioCasamento.API\obj\Debug\netcoreapp3.1\CartorioCasamento.API.pdb
 D:\FIAP\1ª Encontro Presencial - 2020\Desafio\server\CartorioCasamento.API\obj\Debug\netcoreapp3.1\CartorioCasamento.API.genruntimeconfig.cache
+D:\FIAP\1ª Encontro Presencial - 2020\Desafio\server\CartorioCasamento.API\bin\Debug\netcoreapp3.1\AutoMapper.dll
+D:\FIAP\1ª Encontro Presencial - 2020\Desafio\server\CartorioCasamento.API\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\FIAP\1ª Encontro Presencial - 2020\Desafio\server\CartorioCasamento.API\obj\Debug\netcoreapp3.1\CartorioCasamento.API.csproj.CoreCompileInputs.cache
+D:\FIAP\1ª Encontro Presencial - 2020\Desafio\server\CartorioCasamento.API\obj\Debug\netcoreapp3.1\CartorioCasamento.API.MvcApplicationPartsAssemblyInfo.cache

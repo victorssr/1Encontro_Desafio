@@ -1,87 +1,66 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using System.Threading.Tasks;
+using AutoMapper;
+using CartorioCasamento.API.ViewModels;
+using CartorioCasamento.Domain.Interfaces.Services;
+using CartorioCasamento.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CartorioCasamento.API.Controllers
 {
-    public class UsuarioController : Controller
+    [ApiController]
+    [Route("[controller]")]
+    public class UsuarioController : ControllerBase
     {
-        // GET: UsuarioController
-        public ActionResult Index()
+        private readonly IUsuarioService _usuarioService;
+        private readonly IMapper _mapper;
+
+        public UsuarioController(IUsuarioService usuarioService, IMapper mapper)
         {
-            return View();
+            _usuarioService = usuarioService;
+            _mapper = mapper;
         }
 
-        // GET: UsuarioController/Details/5
-        public ActionResult Details(int id)
+        [HttpGet("{id:int}")]
+        public async Task<ActionResult<UsuarioViewModel>> Get(int id)
         {
-            return View();
+            var usuarioViewModel = await _usuarioService.GetById(id);
+
+            if (usuarioViewModel == null) return NotFound();
+
+            return _mapper.Map<UsuarioViewModel>(usuarioViewModel);
         }
 
-        // GET: UsuarioController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: UsuarioController/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<IActionResult> Post(UsuarioViewModel usuarioViewModel)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            if (!ModelState.IsValid) return BadRequest(new { Success = false, Message = "Modelo inválido." });
+
+            await _usuarioService.Add(_mapper.Map<Usuario>(usuarioViewModel));
+
+            return Ok();
         }
 
-        // GET: UsuarioController/Edit/5
-        public ActionResult Edit(int id)
+        [HttpPut("{id:int}")]
+        public async Task<IActionResult> Put(int id, UsuarioViewModel usuarioViewModel)
         {
-            return View();
+            if (id != usuarioViewModel.Id) return BadRequest(new { Success = false, Message = "Id informato está diferente do modelo enviado." });
+
+            await _usuarioService.Update(_mapper.Map<Usuario>(usuarioViewModel));
+
+            return Ok();
         }
 
-        // POST: UsuarioController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        [HttpDelete("{id:int}")]
+        public async Task<IActionResult> Delete(int id)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            var usuarioViewModel = await _usuarioService.GetById(id);
+
+            if (usuarioViewModel == null) return NotFound();
+
+            await _usuarioService.Remove(id);
+
+            return Ok();
         }
 
-        // GET: UsuarioController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: UsuarioController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }
