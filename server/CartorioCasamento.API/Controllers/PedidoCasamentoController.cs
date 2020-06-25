@@ -69,7 +69,7 @@ namespace CartorioCasamento.API.Controllers
             return Ok();
         }
 
-        [HttpGet("{id:int}")]
+        [HttpGet("/[action]/{id:int}")]
         public async Task<ActionResult<List<PedidoCasamentoViewModel>>> BuscarPedidosPendentes(int idUsuario)
         {
             var usuario = await _usuarioService.GetById(idUsuario);
@@ -80,7 +80,7 @@ namespace CartorioCasamento.API.Controllers
             return _mapper.Map<List<PedidoCasamentoViewModel>>(pedidosPendentes);
         }
 
-        [HttpPost("{id:int}, {aceitarPedido:bool}")]
+        [HttpPost("/[action]/{id:int}, {aceitarPedido:bool}")]
         public async Task<IActionResult> ResponderPedidoCasamento(int id, bool aceitarPedido)
         {
             var pedidoCasamento = await _pedidoCasamentoService.GetById(id);

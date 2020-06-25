@@ -64,7 +64,7 @@ namespace CartorioCasamento.API.Controllers
             return Ok();
         }
 
-        [HttpPost]
+        [HttpPost("/[action]/")]
         public async Task<IActionResult> DefineImpedimento(int id, bool desimpedido)
         {
             var usuario = await _usuarioService.GetById(id);
@@ -77,7 +77,7 @@ namespace CartorioCasamento.API.Controllers
             return Ok(new { Success = true, Message = "Situação do usuário alterado com sucesso!" });
         }
 
-        [HttpGet("{id:int}")]
+        [HttpGet("/[action]")]
         public async Task<ActionResult<List<UsuarioViewModel>>> BuscaUsuariosDisponiveis()
         {
             var usuarios = await _usuarioService.GetAll();

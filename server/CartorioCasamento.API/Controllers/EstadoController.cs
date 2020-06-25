@@ -38,7 +38,7 @@ namespace CartorioCasamento.API.Controllers
             return _mapper.Map<EstadoViewModel>(estadoViewModel);
         }
 
-        [HttpGet]
+        [HttpGet("/[action]")]
         public async Task<ActionResult<EstadoViewModel>> ObterPorSigla(string sigla)
         {
             var estadoViewModel = await _estadoService.BuscaEstadoPorSigla(sigla);

@@ -23,6 +23,19 @@ namespace CartorioCasamento.API.Controllers
             _estadoService = estadoService;
         }
 
+        /// <summary>
+        /// Lista todos os desafios registrados
+        /// </summary>
+        /// <returns>Lista dos desafios registrados</returns>
+        /// <response code="200">Retorna os desafios registrados</response>
+        /// <response code="400">Erro ao buscar os desafios</response>
+        /// <remarks>
+        /// Orientações de testes:
+        /// 
+        ///     Clique no botão "Try it out" abaixo e depois no botão "Execute" que será exibido para testar o serviço.
+        ///     
+        ///     Dica: Utilize este serviço para ver os Id's disponíveis para os próximos testes. Caso não encontre nenhum registro na lista, utilize o serviço de cadastro para registrar um novo desafio.
+        /// </remarks>
         [HttpGet("{id:int}")]
         public async Task<ActionResult<CasamentoViewModel>> Get(int id)
         {
@@ -65,7 +78,7 @@ namespace CartorioCasamento.API.Controllers
             return Ok();
         }
 
-        [HttpPost("{id:int}, {idUsuarioTestemunha:int}")]
+        [HttpPost("/[action]/{id:int}, {idUsuarioTestemunha:int}")]
         public async Task<IActionResult> InserirPrimeiraTestemunhaCasamento(int id, int idUsuarioTestemunha)
         {
             var casamento = await _casamentoService.GetById(id);
@@ -88,7 +101,7 @@ namespace CartorioCasamento.API.Controllers
             return Ok();
         }
 
-        [HttpPost("{id:int}, {idUsuarioTestemunha:int}")]
+        [HttpPost("/[action]/{id:int}, {idUsuarioTestemunha:int}")]
         public async Task<IActionResult> AlterarPrimeiraTestemunhaCasamento(int id, int idUsuarioTestemunha)
         {
             var casamento = await _casamentoService.GetById(id);
@@ -101,7 +114,7 @@ namespace CartorioCasamento.API.Controllers
             return Ok();
         }
 
-        [HttpPost("{id:int}, {idUsuarioTestemunha:int}")]
+        [HttpPost("/[action]/{id:int}, {idUsuarioTestemunha:int}")]
         public async Task<IActionResult> AlterarSegundaTestemunhaCasamento(int id, int idUsuarioTestemunha)
         {
             var casamento = await _casamentoService.GetById(id);
@@ -114,7 +127,7 @@ namespace CartorioCasamento.API.Controllers
             return Ok();
         }
 
-        [HttpPost("{id:int}")]
+        [HttpPost("/[action]/{id:int}")]
         public async Task<IActionResult> SolicitarEntradaCasamento(int id, string siglaEstado)
         {
             var casamento = await _casamentoService.GetById(id);
@@ -131,7 +144,7 @@ namespace CartorioCasamento.API.Controllers
             return Ok();
         }
 
-        [HttpPost("{id:int}")]
+        [HttpPost("/[action]/{id:int}")]
         public async Task<IActionResult> AprovarEntradaCasamento(int id, DateTime dataAprovacao)
         {
             var casamento = await _casamentoService.GetById(id);
@@ -144,7 +157,7 @@ namespace CartorioCasamento.API.Controllers
             return Ok();
         }
 
-        [HttpPost("{id:int}")]
+        [HttpPost("/[action]/{id:int}")]
         public async Task<IActionResult> DefinirDataCasamento(int id, DateTime dataCasamento)
         {
             var casamento = await _casamentoService.GetById(id);
@@ -168,7 +181,7 @@ namespace CartorioCasamento.API.Controllers
             return Ok();
         }
 
-        [HttpPost("{id:int}")]
+        [HttpPost("/[action]/{id:int}")]
         public async Task<IActionResult> DefinirRealizacaoCasamento(int id, string linkCerimoniaGravada)
         {
             var casamento = await _casamentoService.GetById(id);
@@ -185,7 +198,7 @@ namespace CartorioCasamento.API.Controllers
             return Ok();
         }
 
-        [HttpPost("{id:int}")]
+        [HttpPost("/[action]/{id:int}")]
         public async Task<IActionResult> DefinirAprovacaoDiarioOficial(int id, DateTime dataAprovacaoDiarioOficial)
         {
             var casamento = await _casamentoService.GetById(id);

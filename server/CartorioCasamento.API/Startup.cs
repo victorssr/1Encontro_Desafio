@@ -11,6 +11,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
+using Swashbuckle.Swagger;
+using System;
+using System.IO;
+using System.Reflection;
 
 namespace CartorioCasamento.API
 {
@@ -34,6 +39,11 @@ namespace CartorioCasamento.API
 
             services.AddControllers();
 
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Mamba API Cartório", Version = "v1" });
+            });
+
             services.AddScoped<ICasamentoRepository, CasamentoRepository>();
             services.AddScoped<IEstadoRepository, EstadoRepository>();
             services.AddScoped<IPedidoCasamentoRepository, PedidoCasamentoRepository>();
@@ -53,6 +63,12 @@ namespace CartorioCasamento.API
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseSwagger();
+            app.UseSwaggerUI(opt =>
+            {
+                opt.SwaggerEndpoint("/swagger/v1/swagger.json", "Mamba V1");
+            });
 
             app.UseHttpsRedirection();
 
