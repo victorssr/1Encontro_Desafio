@@ -29,7 +29,7 @@ Siga os passos abaixo e garanta que tudo estará instalado para a execução do 
 2. No menu superior, acesse a aba "Terminal" > "Run Task", selecione a opção "npm: create - application" e aguarde o fim da transação no Blockchain Hyperledge.\
 3. No menu superior, acesse a aba "Terminal" > "Run Task", selecione a opção "npm: query - application" e aguarde o fim da transação no Blockchain Hyperledge.
 
-**Atenção: O comando create no 2º passo só pode ser testado uma vez, após o primeiro teste será retornado um erro de que já existe um registro com o Id informado.**
+**Atenção: O comando create no 2º passo só pode ser testado uma vez. Nas próximas tentativas, após o primeiro teste, um erro de que já existe um registro com o Id informado  será retornado.**
 
 ## Instruções para testes do MVP consumindo o Blockchain
 ### Pré-requisitos
