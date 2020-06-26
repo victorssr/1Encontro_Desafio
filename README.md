@@ -27,7 +27,8 @@ Siga os passos abaixo e garanta que tudo estará instalado para a execução do 
 ### Passo a passo
 1. No menu superior, acesse a aba "Terminal" > "Run Build Task", selecione a opção "tsc: watch - tsconfig.json - application" e aguarde o final do build.\
 2. No menu superior, acesse a aba "Terminal" > "Run Task", selecione a opção "npm: create - application" e aguarde o fim da transação no Blockchain Hyperledge.\
-3. No menu superior, acesse a aba "Terminal" > "Run Task", selecione a opção "npm: query - application" e aguarde o fim da transação no Blockchain Hyperledge.\
+3. No menu superior, acesse a aba "Terminal" > "Run Task", selecione a opção "npm: query - application" e aguarde o fim da transação no Blockchain Hyperledge.
+
 **Atenção: O comando create no 2º passo só pode ser testado uma vez, após o primeiro teste será retornado um erro de que já existe um registro com o Id informado.**
 
 ## Instruções para testes do MVP consumindo o Blockchain
