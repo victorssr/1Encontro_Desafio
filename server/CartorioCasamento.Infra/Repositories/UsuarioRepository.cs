@@ -17,5 +17,11 @@ namespace CartorioCasamento.Infra.Repositories
 
             return usuario.Desimpedido;
         }
+
+        public async Task<Usuario> ObterPorCpf(string cpf)
+        {
+            return await _contextBase.Usuario.AsNoTracking()
+                        .FirstOrDefaultAsync(u => u.Cpf == cpf.Replace(".", "").Replace("-", ""));
+        }
     }
 }

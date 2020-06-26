@@ -33,26 +33,6 @@ namespace CartorioCasamento.API.Controllers
             return _mapper.Map<CasamentoViewModel>(casamentoViewModel);
         }
 
-        //[HttpPost]
-        //public async Task<IActionResult> Criar(CasamentoViewModel casamentoViewModel)
-        //{
-        //    if (!ModelState.IsValid) return BadRequest(new { Success = false, Message = "Modelo inválido." });
-
-        //    await _casamentoService.Add(_mapper.Map<Casamento>(casamentoViewModel));
-
-        //    return Ok();
-        //}
-
-        //[HttpPut("{id:int}")]
-        //public async Task<IActionResult> Atualizar(int id, CasamentoViewModel casamentoViewModel)
-        //{
-        //    if (id != casamentoViewModel.Id) return BadRequest(new { Success = false, Message = "Id informato está diferente do modelo enviado." });
-
-        //    await _casamentoService.Update(_mapper.Map<Casamento>(casamentoViewModel));
-
-        //    return Ok();
-        //}
-
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> Excluir(int id)
         {
@@ -63,6 +43,14 @@ namespace CartorioCasamento.API.Controllers
             await _casamentoService.Remove(id);
 
             return Ok();
+        }
+
+
+        [HttpGet("{id:int}")]
+        public async Task<ActionResult<CasamentoViewModel>> BuscaCasamentoUsuario(int idUsuario)
+        {
+            var casamentoViewModel = await _casamentoService.BuscarCasamentoUsuario(idUsuario);
+            return _mapper.Map<CasamentoViewModel>(casamentoViewModel);
         }
 
         [HttpPost("/[action]/{id:int}, {idUsuarioTestemunha:int}")]

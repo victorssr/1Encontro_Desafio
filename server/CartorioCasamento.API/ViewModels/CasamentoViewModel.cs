@@ -33,7 +33,7 @@ namespace CartorioCasamento.API.ViewModels
         //public UsuarioViewModel UsuarioSegundaTestemunha { get; set; }
 
         // AUXILIAR
-        public string Status
+        public string StatusDescricao
         {
             get
             {
@@ -45,6 +45,20 @@ namespace CartorioCasamento.API.ViewModels
                 if (DataDivorcio != null) return "O processo de divórcio já foi finalizado com sucesso.";
 
                 return "Parabéns! O seu casamento foi incrível. Já está tudo certo por aqui.";
+            }
+        }
+
+        public string Status
+        {
+            get
+            {
+                if (DataAprovacaoEntrada == null) return "APROVACAO_ENTRADA";
+                if (DataCasamento == null) return "DATA_CASAMENTO";
+                if (DataRealizacaoCasamento == null) return "REALIZACAO_CASAMENTO";
+                if (DataAprovacaoDiarioOficial == null) return "DIARIO_OFICIAL";
+                if (DataDivorcio != null) return "DIVORCIO";
+
+                return "CONCLUIDO";
             }
         }
     }

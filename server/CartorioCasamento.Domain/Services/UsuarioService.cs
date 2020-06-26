@@ -19,5 +19,10 @@ namespace CartorioCasamento.Domain.Services
         {
             return await _usuarioRepository.BuscaDesimpedimento(id);
         }
+
+        public async Task<Usuario> ObterPorCpf(string cpf)
+        {
+            return await _usuarioRepository.ObterPorCpf(cpf);
+        }
     }
 }

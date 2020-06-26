@@ -11,7 +11,20 @@ namespace CartorioCasamento.Domain.Models
 
         public string NomeCompleto { get; set; }
         public DateTime DataNascimento { get; set; }
-        public string Cpf { get; set; }
+
+        private string _cpf;
+        public string Cpf
+        {
+            get
+            {
+                return _cpf;
+            }
+            set
+            {
+                _cpf = value.Replace(".", "").Replace("-", "").Trim();
+            }
+        }
+
         public string Rg { get; set; }
         public bool Desimpedido { get; set; }
         public string Logradouro { get; set; }

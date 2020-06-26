@@ -77,12 +77,11 @@ namespace CartorioCasamento.API.Controllers
             return Ok(new { Success = true, Message = "Situação do usuário alterado com sucesso!" });
         }
 
-        [HttpGet("/[action]")]
-        public async Task<ActionResult<List<UsuarioViewModel>>> BuscaUsuariosDisponiveis()
+        [HttpGet("/[action]/")]
+        public async Task<ActionResult<UsuarioViewModel>> ObterPorCpf(string cpf)
         {
-            var usuarios = await _usuarioService.GetAll();
-
-            return _mapper.Map<List<UsuarioViewModel>>(usuarios);
+            var usuario = await _usuarioService.ObterPorCpf(cpf);
+            return _mapper.Map<UsuarioViewModel>(usuario);
         }
     }
 }
