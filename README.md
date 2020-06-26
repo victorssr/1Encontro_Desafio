@@ -20,7 +20,7 @@ Siga os passos abaixo e garanta que tudo estará instalado para a execução do 
 
 1. Baixe e instale o VS Code no link https://code.visualstudio.com/
 2. Instale a extensão IBM Block Chain Platform e siga os pré-requisitos.
-3. Adicione toda as pastas "cartorio-contract" e "application" ao workspace do VS Code.
+3. Adicione as pastas "cartorio-contract" e "application" ao workspace do VS Code.
 4. Inicie o seu Fabric Environment.
 5. Dentro do seu Fabric Environment, clique em "+ Instantiate", selecione a opção "cartorio-contract" e aguarde o término das configurações.
 
