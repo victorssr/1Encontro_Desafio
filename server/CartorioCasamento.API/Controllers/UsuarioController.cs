@@ -81,6 +81,9 @@ namespace CartorioCasamento.API.Controllers
         public async Task<ActionResult<UsuarioViewModel>> ObterPorCpf(string cpf)
         {
             var usuario = await _usuarioService.ObterPorCpf(cpf);
+            
+            if (usuario == null) return NotFound();
+
             return _mapper.Map<UsuarioViewModel>(usuario);
         }
     }

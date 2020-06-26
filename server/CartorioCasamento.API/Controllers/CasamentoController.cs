@@ -46,10 +46,13 @@ namespace CartorioCasamento.API.Controllers
         }
 
 
-        [HttpGet("{id:int}")]
+        [HttpGet("/[action]/{idUsuario:int}")]
         public async Task<ActionResult<CasamentoViewModel>> BuscaCasamentoUsuario(int idUsuario)
         {
             var casamentoViewModel = await _casamentoService.BuscarCasamentoUsuario(idUsuario);
+
+            if (casamentoViewModel == null) return NotFound();
+
             return _mapper.Map<CasamentoViewModel>(casamentoViewModel);
         }
 
