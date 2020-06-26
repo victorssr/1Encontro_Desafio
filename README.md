@@ -14,7 +14,7 @@ Frontend - Angular\
 Backend - .Net Core 3.1 Web API\
 IBM Blockchain Platform - Hyperledge
 
-## Instruções para o teste do Blockchain
+## Instruções para o teste somente do Blockchain (Sem interação com o MVP)
 ### Pré-requisitos
 Siga os passos abaixo e garanta que tudo estará instalado para a execução do projeto.
 
@@ -30,7 +30,7 @@ Siga os passos abaixo e garanta que tudo estará instalado para a execução do 
 3. No menu superior, acesse a aba "Terminal" > "Run Task", selecione a opção "npm: query - application" e aguarde o fim da transação no Blockchain Hyperledge.\
 **Atenção: O comando create no 2º passo só pode ser testado uma vez, após o primeiro teste será retornado um erro de que já existe um registro com o Id informado.**
 
-## Instruções para testes do MVP
+## Instruções para testes do MVP consumindo o Blockchain
 ### Pré-requisitos
 Siga os passos abaixo e garanta que tudo estará instalado para a execução do projeto.
 
